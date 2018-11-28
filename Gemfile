@@ -19,6 +19,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'pry'
+  gem 'fast_jsonapi'
 end
 
 group :development do

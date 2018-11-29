@@ -5,6 +5,8 @@ class Invoice < ApplicationRecord
   has_many :invoice_items
   has_many :transactions
   
+  default_scope { order(:id)}
+  
   
   # def most_expensive_invoices(quantity)
     # Invoice.select("invoices.*, SUM(invoice_items.unit_price*invoice_items.quantity) AS revenue").joins(:transactions, :invoice_items).where(transactions: {result: "success"}).group(:id).order("revenue DESC").limit(quantity)

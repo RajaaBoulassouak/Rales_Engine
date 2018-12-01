@@ -3,6 +3,9 @@ class InvoiceItemSerializer
   attributes  :id,
               :item_id,
               :invoice_id,
-              :quantity, 
-              :unit_price
+              :quantity
+              
+  attribute :unit_price do |invoice_item|
+    (invoice_item.unit_price.round(2)/100.00).to_s
+  end
 end

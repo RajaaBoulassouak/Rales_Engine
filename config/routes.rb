@@ -6,8 +6,34 @@ Rails.application.routes.draw do
         get '/most_items'   => 'most_items#index'
         get '/revenue'      => 'revenue#index'
         get '/:id/revenue'  => 'revenue#show'
+        get '/find'         => 'find#show'
       end 
-    
+      
+      namespace :customers do 
+        get '/find'         => 'find#show'
+        get '/find_all'     => 'find#index'
+      end 
+      
+      namespace :items do 
+        get '/find'         => 'find#show'
+        get '/find_all'     => 'find#index'
+      end 
+      
+      namespace :invoices do 
+        get '/find'         => 'find#show'
+        get '/find_all'     => 'find#index'
+      end 
+      
+      namespace :invoice_items do 
+        get '/find'         => 'find#show'
+        get '/find_all'     => 'find#index'
+      end 
+      
+      namespace :transactions do 
+        get '/find'         => 'find#show'
+        get '/find_all'     => 'find#index'
+      end 
+       
       resources :merchants, only: [:index, :show]
       resources :customers, only: [:index, :show]
       resources :items, only: [:index, :show]

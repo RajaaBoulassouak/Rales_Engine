@@ -3,9 +3,11 @@ Rails.application.routes.draw do
     namespace :v1 do 
       namespace :merchants do 
         get '/most_revenue' => 'most_revenue#index'
-        get '/most_items' => 'most_items#index'
-        get '/revenue' => 'revenue#index'
+        get '/most_items'   => 'most_items#index'
+        get '/revenue'      => 'revenue#index'
+        get '/:id/revenue'  => 'revenue#show'
       end 
+    
       resources :merchants, only: [:index, :show]
       resources :customers, only: [:index, :show]
       resources :items, only: [:index, :show]

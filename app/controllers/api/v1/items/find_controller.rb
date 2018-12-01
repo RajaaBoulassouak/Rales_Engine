@@ -4,6 +4,10 @@ class Api::V1::Items::FindController < ApplicationController
     render json: ItemSerializer.new(Item.find_by(item_params))
   end
   
+  def index
+    render json: ItemSerializer.new(Item.where(item_params))
+  end
+  
   private 
   def item_params 
     params[:unit_price] = (params[:unit_price].to_f * 100).round(2) if params[:unit_price]

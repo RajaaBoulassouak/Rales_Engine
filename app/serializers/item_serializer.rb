@@ -3,6 +3,9 @@ class ItemSerializer
   attributes  :id, 
               :name, 
               :description, 
-              :unit_price,
               :merchant_id
+  
+  attribute :unit_price do |item|
+    (item.unit_price.round(2)/100.00).to_s
+  end
 end

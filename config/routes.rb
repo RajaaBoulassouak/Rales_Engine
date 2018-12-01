@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get '/revenue'      => 'revenue#index'
         get '/:id/revenue'  => 'revenue#show'
         get '/find'         => 'find#show'
+        get '/find_all'     => 'find#index'
       end 
       
       namespace :customers do 

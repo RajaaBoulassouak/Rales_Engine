@@ -1,4 +1,6 @@
 class TotalRevenueSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :total_revenue
+  attribute :total_revenue do |object|
+    (object.total_revenue.round(2)/100.00).to_s
+  end
 end

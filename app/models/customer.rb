@@ -7,4 +7,13 @@ class Customer < ApplicationRecord
   has_many :invoice_items, through: :invoices
   
   default_scope { order(:id)}
+  
+  def self.favorite_merchant(id)
+    Merchant.unscoped.select("merchants.*, COUNT(invoices.id) AS invoice_total")
+      .joins(:invoices)
+      .where(invoices: { customer_id: id })
+      .group(:id)
+      .order("invoice_total DESC")
+      .first
+  end
 end

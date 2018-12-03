@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         get '/most_revenue' => 'most_revenue#index'
         get '/most_items'   => 'most_items#index'
         get '/revenue'      => 'revenue#index'
+        get '/:id/favorite_customer' => 'favorite_customer#show'
         get '/:id/revenue'  => 'revenue#show'
         get '/find'         => 'find#show'
         get '/find_all'     => 'find#index'

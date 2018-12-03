@@ -62,4 +62,14 @@ class Merchant < ApplicationRecord
       .where(id: params[:id])
       .sum("quantity * unit_price")
   end
+  
+  def self.favorite_customer(id)
+    Customer.unscoped.select("customers.*, COUNT(invoices.id) AS invoice_total")
+    .joins(invoices: :transactions)
+    .merge(Transaction.unscoped.successful)
+    .where(invoices: { merchant_id: id })
+    .group(:id)
+    .order("invoice_total DESC")
+    .first
+  end
 end
